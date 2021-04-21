@@ -4,11 +4,17 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 require('jquery')
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()
+
+
+$(document).ready(function(){
+  if ($('.field_with_errors').length > 0) {
+    $('.field_with_errors input').addClass('uk-form-danger');
+    $('.field_with_errors input').unwrap();
+  }
+})

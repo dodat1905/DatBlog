@@ -1,10 +1,25 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index; end
 
-  def sign_in
+  def new
+    @user = User.new
   end
 
-  def sign_up
-    @user = User.new
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to root_path
+      flash[:success] = 'User registration is successful'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

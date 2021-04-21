@@ -22,21 +22,21 @@ ActiveRecord::Schema.define(version: 2021_04_21_014016) do
   end
 
   create_table "category_posts", force: :cascade do |t|
-    t.bigint "posts_id"
-    t.bigint "categories_id"
+    t.bigint "post_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["categories_id"], name: "index_category_posts_on_categories_id"
-    t.index ["posts_id"], name: "index_category_posts_on_posts_id"
+    t.index ["category_id"], name: "index_category_posts_on_category_id"
+    t.index ["post_id"], name: "index_category_posts_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_posts_on_users_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

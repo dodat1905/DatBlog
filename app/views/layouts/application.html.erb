@@ -14,8 +14,15 @@
   <body>
     <%= render "layouts/header" %>
     <div class="uk-container uk-container-large">
+      <%= flash[:success] %>
       <%= yield %>
     </div>
     <%= render "layouts/footer" %>
+    <script>
+      <% if flash[:success].present? %>
+        UIkit.notification({message: "<span uk-icon=\'icon: check\'></span> <%= flash[:success] %>",
+          pos: 'top-right', status:'success'})
+      <% end %>
+    </script>
   </body>
 </html>
