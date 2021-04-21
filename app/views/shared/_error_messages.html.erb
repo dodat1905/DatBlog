@@ -1,0 +1,7 @@
+<% if errors.any? %>
+  <ul class="uk-list uk-list-circle">
+    <% errors.each do |error| %>
+      <li class="uk-text-danger"><small><%= attribute.capitalize %> <%= error %></small></li>
+    <% end %>
+  </ul>
+<% end %>
