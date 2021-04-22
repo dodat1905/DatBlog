@@ -2,6 +2,6 @@
 
 module ApplicationHelper
   def current_user
-    User.find_by(id: cookies.signed[:user_id].presence || sessions[:user_id].presence)
+    User.find_by(id: cookies.signed[:user_id].presence || session[:user_id].presence)
   end
 end
