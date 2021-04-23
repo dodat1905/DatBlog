@@ -4,3 +4,18 @@ require:
 
 Style/Documentation:
   Enabled: false
+Lint/UselessAssignment:
+  Enabled: false
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - engines/**/*
+    - db/schema.rb
+    - db/migrate/**/*
+    - tmp/**/*
+    - bin/*
+    - config/**/*
+    - 'node_modules/**/*'

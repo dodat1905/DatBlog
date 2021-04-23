@@ -5,8 +5,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-  validates :name, presence: true
-  validates :name, length: { maximum: 50 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :email, presence: true, uniqueness: true
   validates :password_confirmation, presence: true, if: :password_presence?
 

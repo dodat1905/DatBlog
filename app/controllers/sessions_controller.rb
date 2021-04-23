@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     return redirect_to root_path if current_user
 
     @user = User.find_by(email: params[:email])
-    return redirect_to root_path if (Time.current.in_time_zone - user.reset_password_at) / 3600 > 1
+    return redirect_to root_path if user && ((Time.current.in_time_zone - user.reset_password_at) / 3600 > 1)
 
     @token = params[:token]
     @has_token = BCrypt::Password.new(user.reset_digest) == params[:token] if user&.reset_digest
