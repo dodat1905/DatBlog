@@ -1,0 +1,41 @@
+<div class="uk-card uk-card-default uk-card-hover uk-card-body">
+  <h3 class="uk-card-title">Reset password</h3>
+    <% if @has_token %>
+      <%= form_with model: @user, url: reset_password_path, method: :patch, local: true do |f| %>
+        <%= f.hidden_field :email, value: @user.email %>
+        <%= f.hidden_field :token, value: @token %>
+        <div class="uk-margin">
+          <div>Password: </div>
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <%= f.password_field :password, class: "uk-input" %>
+            <%= render "shared/error_messages", errors: @user.errors[:password], attribute: :password %>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <div>Password confirmation: </div>
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+            <%= f.password_field :password_confirmation, class: "uk-input" %>
+            <%= render "shared/error_messages", errors: @user.errors[:password_confirmation], attribute: "Password confirmation" %>
+          </div>
+        </div>
+        <p uk-margin>
+          <%= f.submit class: "uk-button uk-button-primary" %> <%= link_to "Forgot password?", '#' %>
+        </p>
+      <% end %>
+    <% else %>
+      <%= form_with url: reset_password_path, method: :patch, local: true do |f| %>
+        <div class="uk-margin">
+          <div>Email: </div>
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+            <%= f.text_field :email, class: "uk-input" %>
+          </div>
+        </div>
+        <p uk-margin>
+          <%= f.submit class: "uk-button uk-button-primary" %> <%= link_to "Forgot password?", '#' %>
+        </p>
+      <% end %>
+    <% end %>
+</div>

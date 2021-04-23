@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def index
-  end
+  def index; end
 
   def new
     if current_user
@@ -31,6 +30,17 @@ class UsersController < ApplicationController
     else
       @user = User.find_by(id: params[:id])
       redirect_to sessions_path unless current_user.id == user.id
+    end
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if user.update(user_params)
+      redirect_to root_path
+      flash[:success] = 'Update user is successful'
+    else
+      flash.now[:danger] = 'There was an error in editing the user'
+      render :edit
     end
   end
 

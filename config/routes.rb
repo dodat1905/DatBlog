@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       delete :destroy, as: 'users/destroy'
     end
   end
+  get 'reset_password', to: 'sessions#edit'
+  patch 'reset_password', to: 'sessions#update'
 end
