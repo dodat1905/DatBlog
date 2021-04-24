@@ -1,27 +1,32 @@
-<div class="uk-card uk-card-default uk-card-hover uk-card-body">
-  <h3 class="uk-card-title">Register</h3>
-  <%= form_with url: sessions_path, method: :post, local: true do |f| %>
-    <div class="uk-margin">
-      <div>Name</div>
-      <div class="uk-inline">
-        <span class="uk-form-icon" uk-icon="icon: user"></span>
-        <%= f.text_field :name, class: "uk-input" %>
+<br />
+<div class="uk-flex uk-flex-center">
+  <div></div>
+  <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+    <h3 class="uk-card-title">Register</h3>
+    <%= form_with url: sessions_path, method: :post, local: true do |f| %>
+      <div class="uk-margin">
+        <div>Name</div>
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: user"></span>
+          <%= f.text_field :name, class: "uk-input" %>
+        </div>
       </div>
-    </div>
-    <div class="uk-margin">
-      <div>Password</div>
-      <div class="uk-inline">
-        <span class="uk-form-icon" uk-icon="icon: lock"></span>
-        <%= f.password_field :password, class: "uk-input" %>
+      <div class="uk-margin">
+        <div>Password</div>
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: lock"></span>
+          <%= f.password_field :password, class: "uk-input" %>
+        </div>
       </div>
-    </div>
-    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-      <label>
-        <%= f.check_box :remember_me, { class: "uk-checkbox" }, "true", "false" %> Remember me
-      </label>
-    </div>
-    <p uk-margin>
-      <%= f.submit class: "uk-button uk-button-primary" %> <%= link_to "Forgot password?", reset_password_path %>
-    </p>
-  <% end %>
+      <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+        <label>
+          <%= f.check_box :remember_me, { class: "uk-checkbox" }, "true", "false" %> Remember me
+        </label>
+      </div>
+      <p uk-margin>
+        <%= f.submit class: "uk-button uk-button-primary" %> <%= link_to "Forgot password?", reset_password_path %>
+      </p>
+    <% end %>
+  </div>
+  <div></div>
 </div>

@@ -15,3 +15,10 @@
  */
 @import 'uikit-rtl.min.css';
 @import 'uikit.min.css';
+
+html {
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 100% 60%;
+}

@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   end
   get 'reset_password', to: 'sessions#edit'
   patch 'reset_password', to: 'sessions#update'
+
+  resources :posts
 end

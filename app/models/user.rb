@@ -3,15 +3,19 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
 
+  # Associations
   has_many :posts, dependent: :destroy
 
+  # Valdiations
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :email, presence: true, uniqueness: true
   validates :password_confirmation, presence: true, if: :password_presence?
 
+  # Password
   has_secure_password
   has_secure_password :reset, validations: false
 
+  # Instance methods
   def remember
     self.remember_token = SecureRandom.urlsafe_base64
     update(remember_digest: BCrypt::Password.create(remember_token))
