@@ -9,7 +9,14 @@ class Post < ApplicationRecord
   # Valdiations
   validates :title, presence: true
   validates :content, presence: true
+  validate :category_posts_present
 
   # Active storage
   has_rich_text :content
+
+  private
+
+  def category_posts_present
+    return errors.add(:base, 'You must choose a category') if category_posts.blank?
+  end
 end

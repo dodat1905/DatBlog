@@ -9,6 +9,7 @@ import "channels"
 require('jquery')
 require("trix")
 require("@rails/actiontext")
+import $ from 'jquery'
 
 Rails.start()
 ActiveStorage.start()
@@ -18,5 +19,8 @@ $(document).ready(function(){
   if ($('.field_with_errors').length > 0) {
     $('.field_with_errors input').addClass('uk-form-danger');
     $('.field_with_errors input').unwrap();
+  }
+  if ($('.field_with_errors').find("label[for='post_content']").length > 0) {
+    $('#post_content').addClass('uk-form-danger');
   }
 })
