@@ -1,0 +1,29 @@
+<div class="uk-text-center" uk-grid>
+    <div class="uk-width-1-4 uk-padding-remove-right">
+        <div class="uk-card uk-card-default uk-card-body">1-4</div>
+    </div>
+    <div class="uk-width-3-4 uk-padding-remove-right">
+      <% @posts.each do |post| %>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+          <ul class="uk-tab">
+            <li class="uk-active">
+              <%= link_to post_path(post) do %>
+                <h3 class="uk-margin-remove">
+                <%= post.title %></h3>
+              <% end %>
+            </li>
+          </ul>
+          <div uk-grid>
+            <div class="uk-width-1-4 uk-padding-remove-right uk-padding-remove-left">
+              <img src="https://lh3.googleusercontent.com/proxy/AocjCbFz2pMdO511MhYqdg6A6gHSx_a3FYCPtgYXVifbNIj3MSFSM8U07YldUu8Voplo-ELG9LIx6NaOFfwxHrZiP5KAFWfbJkovc8riLJ0Sr_-Rex1JVp0EMwb4nAKY=w128-h128-p-k-no-nu">
+            </div>
+            <div class="uk-width-3-4 uk-padding-remove-left uk-padding-remove-right">
+              <div class="uk-text-left">
+                <%= post.content.to_plain_text.truncate(900) %>
+              </div>
+            </div>
+          </div>
+        </div><br />
+      <% end %>
+    </div>
+</div>
