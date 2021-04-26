@@ -22,3 +22,11 @@ html {
   background-attachment: fixed;
   background-position: 100% 60%;
 }
+.uk-tab>*>a {
+  padding: 5px 0px;
+  border-bottom: 3px solid transparent;
+}
+
+.uk-tab {
+  margin-right: 0px;
+}

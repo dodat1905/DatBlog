@@ -2,13 +2,15 @@
 <div class="uk-flex uk-flex-center">
   <div></div>
   <div class="uk-card uk-card-default uk-card-hover uk-card-body">
-  <h3 class="uk-card-title">Reset password</h3>
+  <ul uk-tab>
+    <li class="uk-active"><a href="#"><h3 class="uk-margin-remove">Reset password</h3></a></li>
+  </ul>
     <% if @has_token %>
       <%= form_with model: @user, url: reset_password_path, method: :patch, local: true do |f| %>
         <%= f.hidden_field :email, value: @user.email %>
         <%= f.hidden_field :token, value: @token %>
         <div class="uk-margin">
-          <div>Password: </div>
+          <div><b>Password</b></div>
           <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: lock"></span>
             <%= f.password_field :password, class: "uk-input" %>
@@ -16,7 +18,7 @@
           </div>
         </div>
         <div class="uk-margin">
-          <div>Password confirmation: </div>
+          <div><b>Password confirmation</b></div>
           <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: lock"></span>
             <%= f.password_field :password_confirmation, class: "uk-input" %>

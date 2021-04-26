@@ -1,6 +1,22 @@
 <%= form_with model: @post do |f| %>
-    <%= f.label :content %>
-    <%= f.text_field :title %>
+  <div class="uk-margin">
+    <b><%= f.label :title %></b>
+    <%= f.text_field :title, class: 'uk-input' %>
+    <%= render "shared/error_messages", errors: @post.errors[:title], attribute: :title %>
+  </div>
+  <div class="uk-margin">
+    <b><%= f.label :category %></b>
+    <div class="uk-column-1-6 uk-column-divider">
+      <%= f.collection_check_boxes :category_ids, Category.select(:id, :name), :id, :name, {}, class: "uk-checkbox" do |b| %>
+        <label><%= b.check_box %> <%= b.label %></label><br />
+      <% end %>
+    </div>
+    <%= render "shared/error_messages", errors: @post.errors[:base], attribute: '' %>
+  </div>
+  <div class="uk-margin">
+    <b><%= f.label :content %></b>
     <%= f.rich_text_area :content %>
-    <%= f.submit %>
+    <%= render "shared/error_messages", errors: @post.errors[:content], attribute: :content %>
+  </div>
+  <%= f.submit class: 'uk-button uk-button-primary uk-align-center uk-margin-auto-bottom uk-first-column' %>
 <% end %>

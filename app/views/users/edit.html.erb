@@ -2,7 +2,9 @@
 <div class="uk-flex uk-flex-center">
   <div></div>
   <div class="uk-card uk-card-default uk-card-hover uk-card-body">
-    <h3 class="uk-card-title">Edit user</h3>
+    <ul uk-tab>
+      <li class="uk-active"><a href="#"><h3 class="uk-margin-remove">Edit user</h3></a></li>
+    </ul>
     <%= render "form", model: @user %>
   </div>
   <div></div>

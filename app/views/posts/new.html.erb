@@ -1,5 +1,7 @@
 <br />
 <div class="uk-card uk-card-default uk-card-hover uk-card-body">
-  <h3 class="uk-card-title">New post</h3>
-    <%= render "form", model: @post %>
+  <ul uk-tab>
+    <li class="uk-active"><a href="#"><h3 class="uk-margin-remove">New post</h3></a></li>
+  </ul>
+  <%= render "form", model: @post %>
 </div>
