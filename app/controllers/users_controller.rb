@@ -36,11 +36,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     if user.update(user_params)
-      redirect_to root_path
-      flash[:success] = 'Update user is successful'
+      request_successfully
     else
-      flash.now[:danger] = 'There was an error in editing the user'
-      render :edit
+      request_unsuccessfully
     end
   end
 
@@ -48,7 +46,29 @@ class UsersController < ApplicationController
 
   attr_reader :user
 
+  def request_successfully
+    if request.format.json?
+      render json: {
+        success: 'Upload avatar successfully'
+      }
+    else
+      redirect_to edit_user_path(user)
+      flash[:success] = 'Update user is successful'
+    end
+  end
+
+  def request_unsuccessfully
+    if request.format.json?
+      render json: {
+        error: 'Upload avatar has an error'
+      }
+    else
+      flash.now[:danger] = 'There was an error in editing the user'
+      render :edit
+    end
+  end
+
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 end

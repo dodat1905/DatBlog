@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password_confirmation, presence: true, if: :password_presence?
 
+  # Active storages
+  has_one_attached :avatar
+
   # Password
   has_secure_password
   has_secure_password :reset, validations: false

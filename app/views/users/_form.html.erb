@@ -1,3 +1,6 @@
+<%= form_with model: model, local: true, class: "dropzone", id: 'upload-avatar' do |f| %>
+  <%= f.file_field :avatar, class: "uk-hidden" %>
+<% end %>
 <%= form_with model: model, local: true do |f| %>
   <div class="uk-margin">
     <div><b>Name</b></div>
@@ -35,3 +38,18 @@
     <%= f.submit class: "uk-button uk-button-primary uk-align-center uk-margin-auto-bottom" %>
   </p>
 <% end %>
+
+<script>
+  Dropzone.options.uploadAvatar = {
+    paramName: "user[avatar]",
+    maxFiles: 1,
+    acceptedFiles: "image/*",
+    uploadMultiple: false,
+    success: function(request) {
+      UIkit.notification({
+        message: `<span uk-icon=\"icon: check\"></span> ${JSON.parse(request.xhr.response).success}`,
+        pos: "top-right", status:"success"
+      })
+    }
+  };
+</script>
