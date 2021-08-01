@@ -1,0 +1,9 @@
+require: rubocop-rails
+require: rubocop-rspec
+Style/Documentation:
+  Enabled: false
+AllCops:
+  Exclude:
+    - 'bin/bundle'
+    - 'db/schema.rb'
+    - 'spec/rails_helper.rb'
