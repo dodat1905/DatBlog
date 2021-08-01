@@ -11,9 +11,12 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validate :tag_posts_present
 
+  # Nested attributes
+  accepts_nested_attributes_for :tag_posts, allow_destroy: true
+
   private
 
-  def category_posts_present
+  def tag_posts_present
     return errors.add(:base, 'You must choose a tag') if tag_posts.blank?
   end
 end

@@ -5,9 +5,6 @@ module Api
     class SessionsController < Api::V1::ApiController
       before_action :authorize_request, except: :create
 
-      def index
-      end
-
       def create
         @user = User.find_by name: params[:name]
         if user.present? && user.authenticate(params[:password])
